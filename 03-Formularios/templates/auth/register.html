@@ -18,4 +18,12 @@ Formulario
     <input type="submit" value="registrar" >
 </form>
 
+{% if successHtml %}
+    <p style="color: green;">{{ successHtml }}</p>
+{% endif %}
+
+{% if errorHtml %}
+    <p style="color: red;">{{ errorHtml }}</p>
+{% endif %}
+
 {% endblock %}
