@@ -1,6 +1,26 @@
 from flask import Flask, render_template
 
 app = Flask(__name__)
+# Filtros personalizados
+from datetime import datetime
+
+#registrando funcion como filtro para poder enviarlo a la plnatilla HTML que permite agregarlo en html jinja2
+@app.add_template_filter
+def today(date):
+    return date.strftime('%d-%m-%Y')
+#otra manera registrar
+#app.add_template_filter(today,'today')
+
+#Funcion para html
+def repite(s,n):
+    return s *n
+
+#registrando funcion como filtro para poder enviarlo a la plnatilla HTML
+@app.template_global
+def repite2(s,n):
+    return s *n
+#otra manera registrar
+#app.template_global(repite2,'repite2')
 
 @app.route('/')
 def index():
@@ -10,7 +30,14 @@ def index():
 def mensaje():
     nombre = 'Sandro'
     amigos=['Juan','carlos','migel']
-    return render_template('mensaje.html', nombreHtml = nombre, amigosHtml=amigos)
+    fecha =  datetime.now()
+    return render_template(
+        'mensaje.html',
+        nombreHtml  =   nombre,
+        amigosHtml  =   amigos,
+        fechaHtml   =   fecha,
+        repiteHtml  =   repite,
+    )
 
 
 if __name__ == '__main__':

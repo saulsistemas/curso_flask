@@ -6,15 +6,18 @@ Inicio
 
 {% block contenido %}
     {% if nombreHtml %}
-        Este es un mensaje de  {{ nombreHtml }}
+        Este es un mensaje de  {{ nombreHtml | upper }}
     {% else %}
         Hola no envio
     {% endif %}
 
     <h2>Lista de amigos</h2>
     <ul>
-        {% for amigo in amigosHtml %}
+        {% for amigo in amigosHtml | reverse  %}
             <li>{{ amigo }}</li>
         {% endfor %}
     </ul>
+
+    <p>la fecha de hoy es  {{ fechaHtml | today }}</p>
+    <p>La frase repetida es {{ repiteHtml('Hola ', 5) }} </p>
 {% endblock %}
