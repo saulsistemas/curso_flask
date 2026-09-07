@@ -53,6 +53,11 @@ def mensaje(name = None,edad= None):
     else:
         return f'<h1>Hola {name} y tu edad es {edad} </h1>'
 
+#evitando ataque de inyeccion http://127.0.0.1:5000/code/%3Cscript%3Ealert('hola')%3C/script%3E
+from markupsafe import escape
+@app.route('/code/<path:code>') 
+def code(code):
+    return f'<code>{ escape(code)}  </code>'
 
 #5 - if __name__ == "__main__" Esta es una característica propia de Python
 if __name__ == "__main__":
