@@ -11,5 +11,13 @@
     {% else %}
         Hola no envio
     {% endif %}
+
+    <h2>Lista de amigos</h2>
+    <ul>
+        {% for amigo in amigosHtml %}
+            <li>{{ amigo }}</li>
+        {% endfor %}
+    </ul>
+
 </body>
 </html>

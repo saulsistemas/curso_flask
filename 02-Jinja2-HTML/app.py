@@ -9,7 +9,8 @@ def index():
 @app.route('/mensaje')
 def mensaje():
     nombre = 'Sandro'
-    return render_template('mensaje.html', nombreHtml = nombre)
+    amigos=['Juan','carlos','migel']
+    return render_template('mensaje.html', nombreHtml = nombre, amigosHtml=amigos)
 
 
 if __name__ == '__main__':
