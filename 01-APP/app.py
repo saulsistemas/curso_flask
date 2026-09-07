@@ -11,9 +11,16 @@ app = Flask(__name__)
 
 #3 - Decorador @ , el decorador va con el objeto que se creo para instanciar la clase Flask(), en este caso app
 #3.1 - utilizar el metodo route para URL
+#3.2 - Podemos acceder desde distintas rutas a una funcion en especifica
 @app.route('/')
+@app.route('/index') 
 def inicio():
     return 'Hola Mundo'
+
+#3.3 - retornar un html
+@app.route('/contacto')
+def contacto():
+    return '<h1>pagina de contacto</h1>'
 
 #5 - if __name__ == "__main__" Esta es una característica propia de Python
 if __name__ == "__main__":
