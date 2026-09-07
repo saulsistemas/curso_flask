@@ -39,6 +39,16 @@ def mensaje():
         repiteHtml  =   repite,
     )
 
+@app.route('/mensaje2/')
+@app.route('/mensaje2/<name>')
+@app.route('/mensaje2/<name>/<int:edad>')
+def mensaje2(name = None,edad= None):
+    mi_data = {
+        'name':name,
+        'edad':edad
+    }
+    return render_template('mensaje2.html',mi_data=mi_data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

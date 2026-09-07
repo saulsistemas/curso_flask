@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Mensaje 2
+{% endblock %}
+
+{% block contenido %}
+
+    {% if mi_data.name == None and mi_data.edad == None %}
+        <h1>Hola Mundo</h1>
+    {% elif mi_data.edad == None %}
+        <h1>Hola Mundo {{ mi_data.name}}</h1>
+    {% else %}
+        <h1>Hola {{mi_data.name}} y tu edad es {{mi_data.edad}} </h1>
+    {% endif %}
+
+{% endblock %}
