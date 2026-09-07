@@ -6,6 +6,20 @@
     <title>Mi sitio web - {% block titulo %} {% endblock titulo %}</title>
 </head>
 <body>
+    <nav>
+        <li>
+            <a href="{{ url_for('index') }}"> Inicio </a>
+        </li>
+        <li>
+            <a href="{{ url_for('mensaje') }}"> Mensaje </a>
+        </li>
+        <li>
+            <a href="{{ url_for('mensaje2', name = 'Juan Perez') }}"> Mensaje2 - Nombre </a>
+        </li>
+        <li>
+            <a href="{{ url_for('mensaje2', name = 'Juan Perez', edad='15') }}"> Mensaje2  - Nombre edad</a>
+        </li>
+    </nav>
     {% block contenido %}
     {% endblock %}
 </body>
