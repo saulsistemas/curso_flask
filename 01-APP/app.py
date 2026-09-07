@@ -22,6 +22,38 @@ def inicio():
 def contacto():
     return '<h1>pagina de contacto</h1>'
 
+#3.4 enviar valores mediante url de tipo string por defecto http://127.0.0.1:5000/hola/juan
+@app.route('/hola/<name>')
+def hola(name):
+    return f'<h1>Hola mundo {name} </h1>'
+
+#3.4 enviar valores mediante url de tipo int http://127.0.0.1:5000/adios/1
+@app.route('/adios/<int:name>')
+def adios(name:int):
+    return f'<h1>Adiós mundo {name} </h1>'
+
+#3.4 enviar 2 valores mediante url de tipo string int http://127.0.0.1:5000/saludo/juan/25
+@app.route('/saludo/<name>/<int:edad>')
+def saludo(name,edad:int):
+    return f'<h1>Hola {name} y tu edad es {edad} </h1>'
+
+#3.5 enviar n valores mediante varias rutas de tipo string int 
+#http://127.0.0.1:5000/mensaje
+#http://127.0.0.1:5000/mensaje/juan
+#http://127.0.0.1:5000/mensaje/juan/15
+
+@app.route('/mensaje')
+@app.route('/mensaje/<name>')
+@app.route('/mensaje/<name>/<int:edad>')
+def mensaje(name = None,edad= None):
+    if name == None and edad == None:
+        return '<h1>Hola Mundo</h1>'
+    elif edad == None:
+        return f'<h1>Hola mundo {name} </h1>'
+    else:
+        return f'<h1>Hola {name} y tu edad es {edad} </h1>'
+
+
 #5 - if __name__ == "__main__" Esta es una característica propia de Python
 if __name__ == "__main__":
     app.run(debug=True)
