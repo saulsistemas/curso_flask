@@ -7,8 +7,15 @@ def create_app():
     # Configuración del proyecto
     app.config.from_mapping(
         DEBUG       = True,
-        SECRETE_KEY = 'dev'
+        SECRET_KEY = 'dev'
     )
+    
+    #registro de Blueprint
+    from . import todo
+    app.register_blueprint(todo.bp)
+    
+    from . import auth
+    app.register_blueprint(auth.bp)
     
     @app.route('/')
     def index():
